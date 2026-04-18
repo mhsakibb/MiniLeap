@@ -3,7 +3,8 @@ from OpenGL.GLUT import (
     glutInit, glutInitDisplayMode, glutInitWindowSize,
     glutCreateWindow, glutDisplayFunc, glutKeyboardFunc,
     glutTimerFunc, glutMainLoop, glutBitmapCharacter,
-    glutPostRedisplay, GLUT_SINGLE, GLUT_RGB,
+    glutPostRedisplay, glutGet, GLUT_ELAPSED_TIME,
+    GLUT_SINGLE, GLUT_RGB,
     GLUT_BITMAP_HELVETICA_18
 )
 import random
@@ -69,6 +70,11 @@ def draw_text(x, y, text):
 # Cat Character 😺
 # =========================
 def draw_cat(x, y):
+    global jumping
+
+    # animation time (for running)
+    t = glutGet(GLUT_ELAPSED_TIME) / 100.0
+
     # body
     glColor3f(1.0, 0.6, 0.2)
     draw_rect(x, y, 0.12, 0.10)
@@ -95,6 +101,26 @@ def draw_cat(x, y):
     # tail
     glColor3f(1.0, 0.6, 0.2)
     draw_rect(x - 0.03, y + 0.03, 0.03, 0.01)
+
+    # =========================
+    # LEGS (NEW)
+    # =========================
+    glColor3f(0.9, 0.5, 0.2)
+
+    if not jumping:
+        # running animation (up-down)
+        leg_offset = math.sin(t) * 0.01
+
+        # left leg
+        draw_circle(x + 0.03, y - 0.01 + leg_offset, 0.015)
+
+        # right leg (opposite phase)
+        draw_circle(x + 0.09, y - 0.01 - leg_offset, 0.015)
+
+    else:
+        # jump pose (legs slightly up)
+        draw_circle(x + 0.03, y + 0.005, 0.015)
+        draw_circle(x + 0.09, y + 0.005, 0.015)
 
 
 # =========================
