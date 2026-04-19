@@ -97,6 +97,7 @@ _scroll_ug = 0.0
 _scroll_desert = 0.0
 _scroll_water = 0.0
 
+
 # ============================================================
 # UTILITIES
 # ============================================================
@@ -314,28 +315,40 @@ def _draw_realistic_legs(x, y, s, t, is_jumping):
     if is_jumping:
         leg_configs = [
             (
-                x + 0.025 * s, y + 0.040 * s,
-                x + 0.010 * s, y + 0.010 * s,
-                x + 0.005 * s, y - 0.002 * s,
+                x + 0.025 * s,
+                y + 0.040 * s,
+                x + 0.010 * s,
+                y + 0.010 * s,
+                x + 0.005 * s,
+                y - 0.002 * s,
             ),
             (
-                x + 0.105 * s, y + 0.040 * s,
-                x + 0.120 * s, y + 0.010 * s,
-                x + 0.125 * s, y - 0.002 * s,
+                x + 0.105 * s,
+                y + 0.040 * s,
+                x + 0.120 * s,
+                y + 0.010 * s,
+                x + 0.125 * s,
+                y - 0.002 * s,
             ),
         ]
     else:
         lo = math.sin(t * 1.2) * 0.018
         leg_configs = [
             (
-                x + 0.025 * s, y + 0.020 * s,
-                x + 0.020 * s, y - 0.010 * s + lo,
-                x + 0.016 * s, y - 0.024 * s + lo,
+                x + 0.025 * s,
+                y + 0.020 * s,
+                x + 0.020 * s,
+                y - 0.010 * s + lo,
+                x + 0.016 * s,
+                y - 0.024 * s + lo,
             ),
             (
-                x + 0.105 * s, y + 0.020 * s,
-                x + 0.110 * s, y - 0.010 * s - lo,
-                x + 0.114 * s, y - 0.024 * s - lo,
+                x + 0.105 * s,
+                y + 0.020 * s,
+                x + 0.110 * s,
+                y - 0.010 * s - lo,
+                x + 0.114 * s,
+                y - 0.024 * s - lo,
             ),
         ]
     for hx, hy, kx, ky, px, py in leg_configs:
@@ -578,8 +591,14 @@ def draw_ice_bg():
 
 def _draw_ice_mountains(scroll):
     peaks = [
-        (-0.9, 0.35), (-0.6, 0.60), (-0.3, 0.42), (0.0, 0.72),
-        (0.3, 0.50), (0.6, 0.65), (0.9, 0.38), (1.2, 0.55),
+        (-0.9, 0.35),
+        (-0.6, 0.60),
+        (-0.3, 0.42),
+        (0.0, 0.72),
+        (0.3, 0.50),
+        (0.6, 0.65),
+        (0.9, 0.38),
+        (1.2, 0.55),
     ]
     glBegin(GL_POLYGON)
     glVertex2f(-1.1, -0.20)
@@ -594,8 +613,14 @@ def _draw_ice_mountains(scroll):
 
 def _draw_ice_caps(scroll):
     peaks = [
-        (-0.9, 0.35), (-0.6, 0.60), (-0.3, 0.42), (0.0, 0.72),
-        (0.3, 0.50), (0.6, 0.65), (0.9, 0.38), (1.2, 0.55),
+        (-0.9, 0.35),
+        (-0.6, 0.60),
+        (-0.3, 0.42),
+        (0.0, 0.72),
+        (0.3, 0.50),
+        (0.6, 0.65),
+        (0.9, 0.38),
+        (1.2, 0.55),
     ]
     for px, ph in peaks:
         ox = ((px - scroll) % 2.4) - 1.2
@@ -701,10 +726,14 @@ def draw_desert_bg():
     global _scroll_desert
 
     glBegin(GL_QUADS)
-    glColor3f(0.95, 0.55, 0.15); glVertex2f(-1, -1)
-    glColor3f(0.95, 0.55, 0.15); glVertex2f( 1, -1)
-    glColor3f(0.75, 0.25, 0.45); glVertex2f( 1,  1)
-    glColor3f(0.75, 0.25, 0.45); glVertex2f(-1,  1)
+    glColor3f(0.95, 0.55, 0.15)
+    glVertex2f(-1, -1)
+    glColor3f(0.95, 0.55, 0.15)
+    glVertex2f(1, -1)
+    glColor3f(0.75, 0.25, 0.45)
+    glVertex2f(1, 1)
+    glColor3f(0.75, 0.25, 0.45)
+    glVertex2f(-1, 1)
     glEnd()
 
     glColor3f(1.0, 0.95, 0.3)
@@ -776,7 +805,12 @@ def _draw_cacti_layer(base_y, height, scroll):
 # ============================================================
 _scroll_water = 0.0
 _water_bubbles = [
-    [random.uniform(-1, 1), random.uniform(-0.5, 1.0), random.uniform(0.005, 0.015), random.uniform(0.5, 2.0)]
+    [
+        random.uniform(-1, 1),
+        random.uniform(-0.5, 1.0),
+        random.uniform(0.005, 0.015),
+        random.uniform(0.5, 2.0),
+    ]
     for _ in range(30)
 ]
 _water_fish = []
@@ -786,10 +820,14 @@ def draw_underwater_bg():
     global _scroll_water, _water_fish
 
     glBegin(GL_QUADS)
-    glColor3f(0.02, 0.10, 0.25); glVertex2f(-1, -1)
-    glColor3f(0.02, 0.10, 0.25); glVertex2f( 1, -1)
-    glColor3f(0.00, 0.20, 0.40); glVertex2f( 1,  1)
-    glColor3f(0.00, 0.20, 0.40); glVertex2f(-1,  1)
+    glColor3f(0.02, 0.10, 0.25)
+    glVertex2f(-1, -1)
+    glColor3f(0.02, 0.10, 0.25)
+    glVertex2f(1, -1)
+    glColor3f(0.00, 0.20, 0.40)
+    glVertex2f(1, 1)
+    glColor3f(0.00, 0.20, 0.40)
+    glVertex2f(-1, 1)
     glEnd()
 
     glColor3f(0.15, 0.35, 0.55)
@@ -839,7 +877,11 @@ def draw_underwater_bg():
             glVertex2f(fx + 0.065 * fsize, fy - 0.02 * fsize)
         glEnd()
         glColor3f(0, 0, 0)
-        draw_circle(fx + (0.015 if fdir > 0 else -0.015) * fsize, fy + 0.005 * fsize, 0.005 * fsize)
+        draw_circle(
+            fx + (0.015 if fdir > 0 else -0.015) * fsize,
+            fy + 0.005 * fsize,
+            0.005 * fsize,
+        )
 
 
 def _update_bubbles():
@@ -855,13 +897,19 @@ def _update_bubbles():
 def _update_fish():
     global _water_fish
     if len(_water_fish) < 5:
-        _water_fish.append([
-            random.uniform(-1.2, 1.2),
-            random.uniform(-0.4, 0.6),
-            random.choice([-1, 1]),
-            random.uniform(0.7, 1.3),
-            (random.uniform(0.5, 0.9), random.uniform(0.4, 0.7), random.uniform(0.3, 0.6))
-        ])
+        _water_fish.append(
+            [
+                random.uniform(-1.2, 1.2),
+                random.uniform(-0.4, 0.6),
+                random.choice([-1, 1]),
+                random.uniform(0.7, 1.3),
+                (
+                    random.uniform(0.5, 0.9),
+                    random.uniform(0.4, 0.7),
+                    random.uniform(0.3, 0.6),
+                ),
+            ]
+        )
     for f in _water_fish[:]:
         f[0] += 0.005 * f[2]
         if f[0] > 1.3 or f[0] < -1.3:
@@ -1188,7 +1236,13 @@ def init_level():
     global score, injury_count, game_over_flag, speed, speed_timer
     global obstacles, coins, stars, explosions
     global rain_drops, rain_active, rain_timer
-    global _scroll_jungle, _scroll_ice, _scroll_ug, _scroll_desert, _scroll_water, _water_fish
+    global \
+        _scroll_jungle, \
+        _scroll_ice, \
+        _scroll_ug, \
+        _scroll_desert, \
+        _scroll_water, \
+        _water_fish
 
     cat_x = -0.65
     cat_y = ground_y
@@ -1287,7 +1341,8 @@ def draw_splash():
 
     glColor3f(0.4, 0.4, 0.6)
     draw_text(
-        -0.98, -0.95,
+        -0.98,
+        -0.95,
         "MiniLeap v1.0  |  Magnific Studios Style",
         GLUT_BITMAP_HELVETICA_12,
     )
@@ -1313,7 +1368,9 @@ def draw_story():
         draw_text(0.16, -0.34, "z", GLUT_BITMAP_HELVETICA_18)
         draw_text(0.23, -0.27, "Z", GLUT_BITMAP_TIMES_ROMAN_24)
         glColor3f(1, 1, 1)
-        draw_text_centered(-0.92, "MiniLeap is peacefully napping...", GLUT_BITMAP_HELVETICA_18)
+        draw_text_centered(
+            -0.92, "MiniLeap is peacefully napping...", GLUT_BITMAP_HELVETICA_18
+        )
         if story_timer > 160:
             story_phase = 1
             story_timer = 0
@@ -1332,7 +1389,9 @@ def draw_story():
         glColor3f(1, 0.8, 0.2)
         draw_text(-0.12, -0.20, "BZZZ!", GLUT_BITMAP_HELVETICA_18)
         glColor3f(1, 1, 1)
-        draw_text_centered(-0.92, "A fly is disturbing MiniLeap's nap!", GLUT_BITMAP_HELVETICA_18)
+        draw_text_centered(
+            -0.92, "A fly is disturbing MiniLeap's nap!", GLUT_BITMAP_HELVETICA_18
+        )
         if story_timer > 180:
             story_phase = 2
             story_timer = 0
@@ -1344,7 +1403,11 @@ def draw_story():
         fly_y = -0.42 + math.sin(story_timer * 0.15) * 0.08
         draw_fly(fly_x, fly_y, scale=1.5)
         glColor3f(1, 1, 1)
-        draw_text_centered(-0.92, "MiniLeap chases the fly through the world!", GLUT_BITMAP_HELVETICA_18)
+        draw_text_centered(
+            -0.92,
+            "MiniLeap chases the fly through the world!",
+            GLUT_BITMAP_HELVETICA_18,
+        )
         if story_timer > 220:
             story_phase = 0
             story_timer = 0
@@ -1516,11 +1579,17 @@ level_buttons = [
     (-0.95, -0.10, 0.35, 0.55),  # Jungle
     (-0.52, -0.10, 0.35, 0.55),  # Ice
     (-0.09, -0.10, 0.35, 0.55),  # Underground
-    ( 0.34, -0.10, 0.35, 0.55),  # Desert
-    ( 0.77, -0.10, 0.35, 0.55),  # Underwater
+    (0.34, -0.10, 0.35, 0.55),  # Desert
+    (0.77, -0.10, 0.35, 0.55),  # Underwater
 ]
 level_names = ["Jungle", "Ice Kingdom", "Underground", "Desert", "Underwater"]
-level_subtitles = ["Tropical Adventure", "Frozen Tundra", "Crystal Cavern", "Scorching Sands", "Deep Ocean"]
+level_subtitles = [
+    "Tropical Adventure",
+    "Frozen Tundra",
+    "Crystal Cavern",
+    "Scorching Sands",
+    "Deep Ocean",
+]
 
 
 def draw_main_menu():
@@ -1531,14 +1600,16 @@ def draw_main_menu():
     draw_text(-0.35, 0.82, "SELECT YOUR WORLD", GLUT_BITMAP_TIMES_ROMAN_24)
 
     glColor3f(0.70, 0.70, 1.00)
-    draw_text_centered(0.72, "Click a world to begin your adventure!", GLUT_BITMAP_HELVETICA_18)
+    draw_text_centered(
+        0.72, "Click a world to begin your adventure!", GLUT_BITMAP_HELVETICA_18
+    )
 
     colors = [
-        (0.08, 0.35, 0.08),   # jungle green
-        (0.05, 0.15, 0.35),   # ice blue
-        (0.15, 0.05, 0.30),   # underground purple
-        (0.30, 0.12, 0.02),   # desert orange
-        (0.02, 0.10, 0.25),   # underwater navy
+        (0.08, 0.35, 0.08),  # jungle green
+        (0.05, 0.15, 0.35),  # ice blue
+        (0.15, 0.05, 0.30),  # underground purple
+        (0.30, 0.12, 0.02),  # desert orange
+        (0.02, 0.10, 0.25),  # underwater navy
     ]
     border_colors = [
         (0.20, 0.80, 0.20),
@@ -1578,11 +1649,15 @@ def draw_main_menu():
 
         glColor3f(1, 1, 1)
         name_w = len(level_names[i]) * 0.008
-        draw_text(bx + bw / 2 - name_w, by + 0.18, level_names[i], GLUT_BITMAP_TIMES_ROMAN_24)
+        draw_text(
+            bx + bw / 2 - name_w, by + 0.18, level_names[i], GLUT_BITMAP_TIMES_ROMAN_24
+        )
 
         glColor3f(0.75, 0.85, 0.75)
         sub_w = len(level_subtitles[i]) * 0.006
-        draw_text(bx + bw / 2 - sub_w, by + 0.08, level_subtitles[i], GLUT_BITMAP_HELVETICA_12)
+        draw_text(
+            bx + bw / 2 - sub_w, by + 0.08, level_subtitles[i], GLUT_BITMAP_HELVETICA_12
+        )
 
     cx = -1.0 + (t * 0.25) % 2.2
     draw_cat(cx, -0.88, scale=0.8)
