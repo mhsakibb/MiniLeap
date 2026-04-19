@@ -1093,7 +1093,7 @@ def draw_splash():
 
     # MINILEAP title
     glColor3f(1.0, 0.90, 0.20)
-    draw_text(-0.38, 0.70, "M I N I L E A P", GLUT_BITMAP_TIMES_ROMAN_24)
+    draw_text(-0.11, 0.70, "M I N I L E A P", GLUT_BITMAP_TIMES_ROMAN_24)
 
     # subtitle
     glColor3f(0.80, 0.70, 1.00)
@@ -1315,7 +1315,7 @@ def draw_instructions():
     if int(t * 2) % 2 == 0:
         glColor3f(0.85, 0.85, 1.00)
         draw_text_centered(
-            -0.90, "Press SPACE to Choose Your World!", GLUT_BITMAP_HELVETICA_18
+            -0.90, "Press Enter to Choose Your World!", GLUT_BITMAP_HELVETICA_18
         )
 
 
